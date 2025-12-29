@@ -17,3 +17,12 @@ Below is a Terraform skeleton overlay you can add to your existing 1C + Bonus-A 
 
 Add 1c_bonus_variables.tf (append to variables.tf)
 
+Add file: bonus_b.tf
+This assumes you already have from 1C / Bonus-A:
+    aws_vpc.chewbacca_vpc01
+    aws_subnet.chewbacca_public_subnets
+    aws_subnet.chewbacca_private_subnets
+    aws_security_group.chewbacca_ec2_sg01 (for private EC2)
+    aws_instance.chewbacca_ec201_private_bonus (private EC2 instance)
+    aws_sns_topic.chewbacca_sns_topic01 (SNS topic)
+
