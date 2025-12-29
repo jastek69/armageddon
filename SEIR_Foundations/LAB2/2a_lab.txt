@@ -22,7 +22,14 @@ So you will either:
     create a second provider alias for us-east-1, or
     manually create cert and paste ARN (less ideal)
 
+1) Origin cloaking: Allow ALB inbound only from CloudFront prefix list
+#lab2_cloudfront_origin_cloaking.tf
 
+Now add/replace your ALB SG ingress:
+#lab2_cloudfront_origin_cloaking.tf
 
+Why this works: AWS provides an AWS-managed prefix list for CloudFront origin-facing IP ranges, maintained by AWS.
 
+2) Add a secret “origin header” that ALB requires
+CloudFront will add this header, and ALB will only forward requests that contain it. This is the second layer (defense-in-depth), because anyone can create a CloudFront distribution and use the prefix list trick alone isn’t perfect. AWS explicitly documents the “custom header + ALB rule” approach.
 
