@@ -40,3 +40,22 @@
           ▼
     PHASE 10
     Failure / Integration Testing
+
+
+            Enums
+          ↓
+        DataClassification
+          ↓
+        Capability
+          ↓
+        Model / Service definitions
+          ↓
+        AIRequest
+          ↓
+        ProhibitedData / Policy models
+          ↓
+        RoutingDecision
+          ↓
+        AIResponse
+
+
