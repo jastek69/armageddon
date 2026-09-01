@@ -101,7 +101,91 @@ class PolicyDecisionStatus(Agent11Enum):
     RESTRICT = "restrict"
     INDETERMINATE = "indeterminate"
 
+# ==========================================================================
+# DATA ROUTE POLICY EFFECT
+# ==========================================================================
+#
+# DataRoutePolicyEffect describes CONFIGURED policy behavior.
+#
+# It answers:
+#
+#
+#     "WHAT DOES THIS POLICY RULE SAY?"
+#
+#
+# This is intentionally different from PolicyDecisionStatus.
+#
+#
+#     DataRoutePolicyEffect
+#         =
+#     CONFIGURATION
+#
+#
+#     PolicyDecisionStatus
+#         =
+#     EVALUATION RESULT
+#
+#
+# SEIR-I configuration supports:
+#
+#
+#     ALLOW
+#
+#     DENY
+#
+#
+# Do not add INDETERMINATE here.
+#
+# INDETERMINATE means policy evaluation could not establish a
+# definitive authorization result. It is not something an
+# administrator intentionally configures.
+#
+#
+# Do not add RESTRICT merely because PolicyDecisionStatus contains it.
+#
+# A configured restriction eventually requires a typed contract
+# describing WHAT is restricted.
+#
+#
+# Future SEIR-II examples may include:
+#
+#     allowed regions
+#     prohibited regions
+#     approved model families
+#     approved deployments
+#     human approval requirements
+#     residency requirements
+#     customer-specific restrictions
+#
+#
+# When those requirements become real, introduce the domain object
+# that actually describes them.
+#
+#
+#     RESTRICT WITHOUT RESTRICTION DETAILS
+#         =
+#     INCOMPLETE DOMAIN MODEL
+#
+#
+#     CONFIGURATION != EVALUATION
+#
+#     POLICY EFFECT != POLICY DECISION STATUS
+#
+#     FUTURE-AWARE != FUTURE-BLOATED
+# ==========================================================================
 
+
+class DataRoutePolicyEffect(Agent11Enum):
+    """
+    Configured effect of a data-routing policy rule.
+
+    This enum represents policy configuration, not the result of
+    evaluating policy for a particular AI request.
+    """
+
+    ALLOW = "allow"
+    DENY = "deny"
+    
 # ===========================================================================
 # User Data Preference
 # ===========================================================================
